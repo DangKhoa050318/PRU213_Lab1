@@ -7,6 +7,7 @@
 [Ll]ogs/
 [Uu]ser[Ss]ettings/
 MemoryCaptures/
+/.vs/
 
 # Bỏ qua các file cấu hình cá nhân hoặc tự sinh
 *.csproj

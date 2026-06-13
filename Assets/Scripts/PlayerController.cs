@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private float maxY = 4.5f;
     private float minX = -8f;
     private float maxX = 8f;
+    private bool isDead = false;
 
     void Update()
     {
@@ -38,7 +39,7 @@ public class PlayerController : MonoBehaviour
 
     void Shoot()
     {
-        Instantiate(laserPrefab, firePoint.position, Quaternion.identity);
+        Instantiate(laserPrefab, firePoint.position, laserPrefab.transform.rotation);
     }
 
     // Xử lý khi đâm vào Ngôi sao (Trigger)
@@ -54,8 +55,11 @@ public class PlayerController : MonoBehaviour
     // Xử lý khi đâm vào Thiên thạch (Collision)
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (isDead) return;
+
         if (collision.gameObject.CompareTag("Asteroid"))
         {
+            isDead = true;
             Destroy(gameObject); // Hủy phi thuyền
             GameManager.Instance.LoadScene("EndGame"); // Thua game
         }
