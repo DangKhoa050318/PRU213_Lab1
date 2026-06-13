@@ -6,22 +6,20 @@ public class Laser : MonoBehaviour
 
     void Update()
     {
-        // Laser bắn sang phải
         transform.position += Vector3.right * speed * Time.deltaTime;
     }
 
     void Start()
     {
-        Destroy(gameObject, 3f); // Tự hủy sau 3 giây
+        Destroy(gameObject, 3f);
     }
 
-    // Tiêu diệt thiên thạch nếu bắn trúng
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Asteroid"))
         {
-            Destroy(collision.gameObject); // Phá hủy thiên thạch
-            Destroy(gameObject);           // Phá hủy tia laser
+            Destroy(collision.gameObject);
+            Destroy(gameObject);          
         }
     }
 }

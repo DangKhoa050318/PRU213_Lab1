@@ -1,15 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-// Quản lý tổng thể game: Điểm số và Chuyển cảnh
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance; // Áp dụng Singleton Pattern
+    public static GameManager Instance;
     public int score = 0;
 
     void Awake()
     {
-        // Đảm bảo chỉ có 1 GameManager duy nhất tồn tại
         if (Instance == null)
         {
             Instance = this;
@@ -39,6 +37,6 @@ public class GameManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
-        Debug.Log("Đã thoát game!");
+        Debug.Log("Quit game!");
     }
 }
